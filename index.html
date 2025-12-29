@@ -5,66 +5,71 @@
 <title>Happy Anniversary 💖</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Comic Sans MS', cursive;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Comic Sans MS', cursive;
 }
 
-body {
-  background: #fff0f5;
-  text-align: center;
-  overflow: hidden;
+body{
+  background:#fff0f5;
+  text-align:center;
+  overflow:hidden;
 }
 
-.slide {
-  display: none;
-  height: 100vh;
-  padding: 40px 20px;
+.slide{
+  display:none;
+  height:100vh;
+  padding:40px 20px;
 }
 
-.active {
-  display: block;
+.active{
+  display:block;
 }
 
-button {
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  background: #ff69b4;
-  color: white;
-  cursor: pointer;
-  margin-top: 30px;
+button{
+  padding:15px 30px;
+  font-size:18px;
+  border-radius:30px;
+  border:none;
+  background:#ff69b4;
+  color:white;
+  cursor:pointer;
+  margin-top:30px;
 }
 
-.heart {
-  font-size: 50px;
-  background: none;
+.back{
+  position:absolute;
+  top:20px;
+  left:20px;
+  background:#ffc0cb;
+  font-size:14px;
 }
 
-img {
-  max-width: 80%;
-  margin: 20px 0;
+.heart{
+  font-size:50px;
+  background:none;
 }
 
-.blur {
-  filter: blur(2px);
+img{
+  max-width:80%;
+  margin:20px 0;
 }
 
-#noBtn {
-  position: absolute;
+.blur{
+  filter:blur(2px);
 }
 
-#yesBtn {
-  transition: transform 0.3s;
+#noBtn{
+  position:absolute;
 }
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
 <audio id="music" loop>
   <source src="take-me.mp3" type="audio/mpeg">
 </audio>
@@ -73,19 +78,21 @@ img {
 <div class="slide active" id="slide1">
   <h1>💖 Happy Anniversary Bebe 💖</h1>
   <p style="margin-top:20px;">I hv something for you</p>
-  <button onclick="nextSlide(2)">Klik aku 💕</button>
+  <button onclick="showSlide(2)">Klik aku 💕</button>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide" id="slide2">
+  <button class="back" onclick="backSlide()">⬅ Back</button>
   <img src="couple.jpg" class="blur">
   <h2>Thank you for being mine</h2>
   <p>I love you soooo matcha 🍵💚</p>
-  <button class="heart" onclick="nextSlide(3)">❤️</button>
+  <button class="heart" onclick="showSlide(3)">❤️</button>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide" id="slide3">
+  <button class="back" onclick="backSlide()">⬅ Back</button>
   <img src="goyounjung.png">
   <h2>Apakah kamu happy sama aku?</h2>
 
@@ -97,8 +104,9 @@ img {
 
 <!-- SLIDE 4 -->
 <div class="slide" id="slide4">
+  <button class="back" onclick="backSlide()">⬅ Back</button>
   <h1>💌 Untuk pacarku</h1>
-  <p style="margin-top:30px;font-size:20px;">
+  <p style="margin-top:30px;font-size:20px;line-height:1.6;">
     Terima kasih sudah bertahan sejauh ini sama aku.<br>
     Aku mungkin belum sempurna,<br>
     tapi perasaanku ke kamu selalu tulus.<br><br>
@@ -107,7 +115,9 @@ img {
 </div>
 
 <script>
-let currentYes = 0;
+let currentSlide = 1;
+let yesCount = 0;
+
 const texts = [
   "Yakin happy?",
   "Bener happy?",
@@ -115,27 +125,40 @@ const texts = [
 ];
 
 const noBtn = document.getElementById("noBtn");
+
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 80);
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
 });
 
-function nextSlide(num) {
+function showSlide(num){
   document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
-  document.getElementById("slide" + num).classList.add("active");
+  document.getElementById("slide"+num).classList.add("active");
+  currentSlide = num;
   document.getElementById("music").play();
 }
 
-function yesClick() {
-  const yesBtn = document.getElementById("yesBtn");
-  document.getElementById("text").innerText = texts[currentYes];
-  yesBtn.style.transform = `scale(${1 + currentYes})`;
-  currentYes++;
+function backSlide(){
+  if(currentSlide > 1){
+    showSlide(currentSlide - 1);
+  }
+}
 
-  if (currentYes === 3) {
-    setTimeout(() => nextSlide(4), 1200);
+function yesClick(){
+  const yesBtn = document.getElementById("yesBtn");
+  const text = document.getElementById("text");
+
+  text.innerText = texts[yesCount];
+
+  yesBtn.style.padding = `${15 + yesCount*10}px ${30 + yesCount*20}px`;
+  yesBtn.style.fontSize = `${18 + yesCount*6}px`;
+
+  yesCount++;
+
+  if(yesCount === 3){
+    setTimeout(() => showSlide(4), 1200);
   }
 }
 </script>
