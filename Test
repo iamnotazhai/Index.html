@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Anniversary 💖</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+body {
+  background: #fff0f5;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  height: 100vh;
+  padding: 40px 20px;
+}
+
+.active {
+  display: block;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: #ff69b4;
+  color: white;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.heart {
+  font-size: 50px;
+  background: none;
+}
+
+img {
+  max-width: 80%;
+  margin: 20px 0;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+#noBtn {
+  position: absolute;
+}
+
+#yesBtn {
+  transition: transform 0.3s;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="take-me.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide1">
+  <h1>💖 Happy Anniversary Bebe 💖</h1>
+  <p style="margin-top:20px;">I hv something for you</p>
+  <button onclick="nextSlide(2)">Klik aku 💕</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide2">
+  <img src="couple.jpg" class="blur">
+  <h2>Thank you for being mine</h2>
+  <p>I love you soooo matcha 🍵💚</p>
+  <button class="heart" onclick="nextSlide(3)">❤️</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide3">
+  <img src="goyounjung.png">
+  <h2>Apakah kamu happy sama aku?</h2>
+
+  <button id="yesBtn" onclick="yesClick()">Iya 🥰</button>
+  <button id="noBtn">Tidak 😝</button>
+
+  <p id="text" style="margin-top:20px;font-size:20px;"></p>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="slide4">
+  <h1>💌 Untuk pacarku</h1>
+  <p style="margin-top:30px;font-size:20px;">
+    Terima kasih sudah bertahan sejauh ini sama aku.<br>
+    Aku mungkin belum sempurna,<br>
+    tapi perasaanku ke kamu selalu tulus.<br><br>
+    Aku sayang kamu, hari ini, besok, dan seterusnya 💖
+  </p>
+</div>
+
+<script>
+let currentYes = 0;
+const texts = [
+  "Yakin happy?",
+  "Bener happy?",
+  "ASIIIK PACARKU HAPPY 💖"
+];
+
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+function nextSlide(num) {
+  document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
+  document.getElementById("slide" + num).classList.add("active");
+  document.getElementById("music").play();
+}
+
+function yesClick() {
+  const yesBtn = document.getElementById("yesBtn");
+  document.getElementById("text").innerText = texts[currentYes];
+  yesBtn.style.transform = `scale(${1 + currentYes})`;
+  currentYes++;
+
+  if (currentYes === 3) {
+    setTimeout(() => nextSlide(4), 1200);
+  }
+}
+</script>
+
+</body>
+</html>
