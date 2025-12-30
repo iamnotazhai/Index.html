@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Happy Anniversary 💖</title>
+<title>Happy Anniversary Bebe 💖</title>
 
 <style>
 *{
@@ -13,30 +13,74 @@
 }
 
 body{
-  background:#fff0f5;
-  text-align:center;
+  background:#2b2255;
+  background-image:linear-gradient(#3b2f7a 1px, transparent 1px),
+                   linear-gradient(90deg, #3b2f7a 1px, transparent 1px);
+  background-size:40px 40px;
   overflow:hidden;
 }
 
 .slide{
   display:none;
   height:100vh;
-  padding:40px 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .active{
-  display:block;
+  display:flex;
 }
 
-button{
+/* WINDOW CARD */
+.window{
+  background:#e8ecff;
+  width:90%;
+  max-width:900px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.35);
+  padding:20px;
+}
+
+.window-header{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  color:#6b6bb3;
+  margin-bottom:15px;
+}
+
+.window-body{
+  display:flex;
+  gap:25px;
+}
+
+.window img{
+  width:230px;
+  border-radius:14px;
+}
+
+.window-content h1{
+  font-size:32px;
+  color:#5a5ad6;
+}
+
+.window-content p{
+  margin-top:12px;
+  color:#555;
+  line-height:1.7;
+}
+
+/* BUTTONS */
+.btn{
+  margin-top:25px;
   padding:15px 30px;
-  font-size:18px;
-  border-radius:30px;
+  border-radius:14px;
   border:none;
-  background:#ff69b4;
+  font-size:18px;
+  background:#5a5ad6;
   color:white;
   cursor:pointer;
-  margin-top:30px;
 }
 
 .back{
@@ -44,74 +88,155 @@ button{
   top:20px;
   left:20px;
   background:#ffc0cb;
+  padding:10px 20px;
+  border-radius:20px;
+  border:none;
+  cursor:pointer;
+}
+
+/* PLAYER */
+.player{
+  margin-top:25px;
+  background:#f7f7ff;
+  border-radius:14px;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   font-size:14px;
 }
 
-.heart{
-  font-size:50px;
-  background:none;
-}
-
-img{
-  max-width:80%;
-  margin:20px 0;
-}
-
-.blur{
-  filter:blur(2px);
-}
-
+/* YES NO */
 #noBtn{
   position:absolute;
+}
+
+/* LETTER */
+.letter{
+  background:#fffdf8;
+  padding:50px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.letter h2{
+  color:#d94f8a;
+  margin-bottom:20px;
+}
+
+.letter p{
+  font-size:18px;
+  line-height:1.9;
+  color:#555;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="take-me.mp3" type="audio/mpeg">
+  <source src="so-easy-to-fall-in-love.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SLIDE 1 -->
 <div class="slide active" id="slide1">
-  <h1>💖 Happy Anniversary Bebe 💖</h1>
-  <p style="margin-top:20px;">I hv something for you</p>
-  <button onclick="showSlide(2)">Klik aku 💕</button>
+  <div class="window">
+    <div class="window-header">
+      <span>BY YOU 💖</span>
+      <span>SITE/TITLE.COM</span>
+    </div>
+
+    <div class="window-body">
+      <img src="seonho.jpg">
+
+      <div class="window-content">
+        <h1>seonh0__kim</h1>
+        <p>
+          <b>Welcome bebe!</b><br>
+          Finally we're here.<br>
+          Let's see what we've done in<br>
+          <b>365 days together</b>.
+        </p>
+
+        <button class="btn" onclick="showSlide(2)">🎉 Happy Anniversary</button>
+
+        <div class="player">
+          <span>🎧 now playing<br><b>So Easy To Fall In Love</b></span>
+          <span>▶️</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide" id="slide2">
   <button class="back" onclick="backSlide()">⬅ Back</button>
-  <img src="couple.jpg" class="blur">
-  <h2>Thank you for being mine</h2>
-  <p>I love you soooo matcha 🍵💚</p>
-  <button class="heart" onclick="showSlide(3)">❤️</button>
+
+  <div class="window">
+    <div class="window-body">
+      <img src="couple.jpg">
+
+      <div class="window-content">
+        <h1>Thank you 🤍</h1>
+        <p>
+          Thank you for being mine.<br>
+          Thank you for every laugh,<br>
+          every story, and every moment.
+        </p>
+
+        <button class="btn" onclick="showSlide(3)">Continue ❤️</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide" id="slide3">
   <button class="back" onclick="backSlide()">⬅ Back</button>
-  <img src="goyounjung.png">
-  <h2>Apakah kamu happy sama aku?</h2>
 
-  <button id="yesBtn" onclick="yesClick()">Iya 🥰</button>
-  <button id="noBtn">Tidak 😝</button>
+  <div class="window">
+    <div class="window-body">
+      <img src="goyounjung.png">
 
-  <p id="text" style="margin-top:20px;font-size:20px;"></p>
+      <div class="window-content">
+        <h1>One question 💭</h1>
+        <p>Apakah kamu happy sama aku?</p>
+
+        <button class="btn" id="yesBtn" onclick="yesClick()">Iyaaa 🥰</button>
+        <button class="btn" id="noBtn">Engga 😝</button>
+
+        <p id="text" style="margin-top:15px;"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SLIDE 4 -->
 <div class="slide" id="slide4">
   <button class="back" onclick="backSlide()">⬅ Back</button>
-  <h1>💌 Untuk pacarku</h1>
-  <p style="margin-top:30px;font-size:20px;line-height:1.6;">
-    Terima kasih sudah bertahan sejauh ini sama aku.<br>
-    Aku mungkin belum sempurna,<br>
-    tapi perasaanku ke kamu selalu tulus.<br><br>
-    Aku sayang kamu, hari ini, besok, dan seterusnya 💖
-  </p>
+
+  <div class="letter">
+    <h2>💌 For Seonh0__kim</h2>
+    <p>
+      We finally made it to our first year together.<br><br>
+
+      Thank you for staying with me until now.<br>
+      Thank you for your patience, your time,<br>
+      and your heart.
+      <br><br>
+
+      I'm sorry if I'm still learning,<br>
+      still growing, still imperfect.
+      <br><br>
+
+      I hope you'll stay in my story,<br>
+      in the months and chapters ahead.
+      <br><br>
+
+      🤍
+    </p>
+  </div>
 </div>
 
 <script>
@@ -127,39 +252,25 @@ const texts = [
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 80);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  noBtn.style.left = Math.random()*60 + "%";
+  noBtn.style.top = Math.random()*60 + "%";
 });
 
-function showSlide(num){
-  document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
-  document.getElementById("slide"+num).classList.add("active");
-  currentSlide = num;
+function showSlide(n){
+  document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
+  document.getElementById("slide"+n).classList.add("active");
+  currentSlide=n;
   document.getElementById("music").play();
 }
 
 function backSlide(){
-  if(currentSlide > 1){
-    showSlide(currentSlide - 1);
-  }
+  if(currentSlide>1) showSlide(currentSlide-1);
 }
 
 function yesClick(){
-  const yesBtn = document.getElementById("yesBtn");
-  const text = document.getElementById("text");
-
-  text.innerText = texts[yesCount];
-
-  yesBtn.style.padding = `${15 + yesCount*10}px ${30 + yesCount*20}px`;
-  yesBtn.style.fontSize = `${18 + yesCount*6}px`;
-
+  document.getElementById("text").innerText = texts[yesCount];
   yesCount++;
-
-  if(yesCount === 3){
-    setTimeout(() => showSlide(4), 1200);
-  }
+  if(yesCount===3) setTimeout(()=>showSlide(4),1200);
 }
 </script>
 
