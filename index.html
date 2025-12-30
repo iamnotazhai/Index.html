@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Anniversary Bebe 💖</title>
-
 <style>
 *{
   margin:0;
@@ -14,272 +13,93 @@
 
 body{
   background:#2b2255;
-  background-image:linear-gradient(#3b2f7a 1px, transparent 1px),
-                   linear-gradient(90deg, #3b2f7a 1px, transparent 1px);
-  background-size:40px 40px;
-  overflow:hidden;
-}
-
-.slide{
-  display:none;
-  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* SLIDE */
+.slide{
+  display:none;
+  width:100%;
+  max-width:900px;
+  background:#e8ecff;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.35);
+  padding:30px;
+  text-align:center;
 }
 
 .active{
-  display:flex;
+  display:block;
 }
 
-/* WINDOW CARD */
-.window{
-  background:#e8ecff;
-  width:90%;
-  max-width:900px;
-  border-radius:16px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.35);
-  padding:20px;
+/* IMAGES */
+.slide img{
+  width:200px;
+  border-radius:14px;
+  margin-bottom:20px;
 }
 
-.window-header{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  color:#6b6bb3;
+/* HEADERS */
+.slide h1{
+  color:#5a5ad6;
   margin-bottom:15px;
 }
 
-.window-body{
-  display:flex;
-  gap:25px;
-}
-
-.window img{
-  width:230px;
-  border-radius:14px;
-}
-
-.window-content{
-  display:flex;
-  flex-direction:column;
-}
-
-.window-content h1{
-  font-size:32px;
-  color:#5a5ad6;
-}
-
-.window-content p{
-  margin-top:12px;
+.slide p{
   color:#555;
-  line-height:1.7;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:25px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn{
-  margin-top:25px;
   padding:15px 30px;
-  border-radius:14px;
   border:none;
-  font-size:18px;
+  border-radius:14px;
   background:#5a5ad6;
   color:white;
+  font-size:18px;
   cursor:pointer;
-  z-index: 10;
 }
 
 .back{
   position:absolute;
   top:20px;
   left:20px;
-  background:#ffc0cb;
   padding:10px 20px;
-  border-radius:20px;
   border:none;
+  border-radius:20px;
+  background:#ffc0cb;
   cursor:pointer;
-  z-index: 10;
-}
-
-/* PLAYER */
-.player{
-  margin-top:25px;
-  background:#f7f7ff;
-  border-radius:14px;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:14px;
-}
-
-/* YES NO */
-#noBtn{
-  position:absolute;
-  z-index: 10;
 }
 
 /* LETTER */
 .letter{
   background:#fffdf8;
-  padding:50px;
-  border-radius:14px;
+  padding:40px;
+  border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  text-align:left;
 }
 
 .letter h2{
   color:#d94f8a;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 
 .letter p{
   font-size:18px;
-  line-height:1.9;
+  line-height:1.8;
   color:#555;
 }
 </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-  <source src="so-easy-to-fall-in-love.mp3" type="audio/mpeg">
-</audio>
-
-<!-- SLIDE 1 -->
-<div class="slide active" id="slide1">
-  <div class="window">
-    <div class="window-header">
-      <span>BY YOU 💖</span>
-      <span>SITE/TITLE.COM</span>
-    </div>
-
-    <div class="window-body">
-      <img src="seonho.jpg">
-
-      <div class="window-content">
-        <h1>seonh0__kim</h1>
-        <p>
-          <b>Welcome bebe!</b><br>
-          Finally we're here.<br>
-          Let's see what we've done in<br>
-          <b>365 days together</b>.
-        </p>
-      </div>
-    </div>
-    <!-- tombol dipindahkan ke sini agar tidak tertutup gambar -->
-    <button class="btn" onclick="showSlide(2)">🎉 Happy Anniversary</button>
-
-    <div class="player">
-      <span>🎧 now playing<br><b>So Easy To Fall In Love</b></span>
-      <span>▶️</span>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 2 -->
-<div class="slide" id="slide2">
-  <button class="back" onclick="backSlide()">⬅ Back</button>
-
-  <div class="window">
-    <div class="window-body">
-      <img src="couple.jpg">
-
-      <div class="window-content">
-        <h1>Thank you 🤍</h1>
-        <p>
-          Thank you for being mine.<br>
-          Thank you for every laugh,<br>
-          every story, and every moment.
-        </p>
-      </div>
-    </div>
-    <button class="btn" onclick="showSlide(3)">Continue ❤️</button>
-  </div>
-</div>
-
-<!-- SLIDE 3 -->
-<div class="slide" id="slide3">
-  <button class="back" onclick="backSlide()">⬅ Back</button>
-
-  <div class="window">
-    <div class="window-body">
-      <img src="goyounjung.png">
-
-      <div class="window-content">
-        <h1>One question 💭</h1>
-        <p>Apakah kamu happy sama aku?</p>
-
-        <button class="btn" id="yesBtn" onclick="yesClick()">Iyaaa 🥰</button>
-        <button class="btn" id="noBtn">Engga 😝</button>
-
-        <p id="text" style="margin-top:15px;"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 4 -->
-<div class="slide" id="slide4">
-  <button class="back" onclick="backSlide()">⬅ Back</button>
-
-  <div class="letter">
-    <h2>💌 For Seonh0__kim</h2>
-    <p>
-      We finally made it to our first year together.<br><br>
-
-      Thank you for staying with me until now.<br>
-      Thank you for your patience, your time,<br>
-      and your heart.
-      <br><br>
-
-      I'm sorry if I'm still learning,<br>
-      still growing, still imperfect.
-      <br><br>
-
-      I hope you'll stay in my story,<br>
-      in the months and chapters ahead.
-      <br><br>
-
-      🤍
-    </p>
-  </div>
-</div>
-
-<script>
-let currentSlide = 1;
-let yesCount = 0;
-
-const texts = [
-  "Yakin happy?",
-  "Bener happy?",
-  "ASIIIK PACARKU HAPPY 💖"
-];
-
-const noBtn = document.getElementById("noBtn");
-
-noBtn.addEventListener("mouseover", () => {
-  noBtn.style.left = Math.random()*60 + "%";
-  noBtn.style.top = Math.random()*60 + "%";
-});
-
-function showSlide(n){
-  document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
-  document.getElementById("slide"+n).classList.add("active");
-  currentSlide=n;
-  document.getElementById("music").play();
-}
-
-function backSlide(){
-  if(currentSlide>1) showSlide(currentSlide-1);
-}
-
-function yesClick(){
-  document.getElementById("text").innerText = texts[yesCount];
-  yesCount++;
-  if(yesCount===3) setTimeout(()=>showSlide(4),1200);
-}
-</script>
-
-</body>
-</html>
+<audio id="music" loop autoplay>
+  <source src="so-easy-to-fal
