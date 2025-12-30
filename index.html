@@ -6,7 +6,8 @@
 
 <style>
 :root{
-  --bg:#2b1b3f;
+  --bg1:#2b1b3f;
+  --bg2:#4a2a6f;
   --card:#b8b6ff;
   --text:#2a2a55;
   --btn:#7c7aff;
@@ -20,7 +21,7 @@
 body{
   margin:0;
   height:100vh;
-  background:linear-gradient(135deg,#2b1b3f,#4a2a6f);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
   display:flex;
   justify-content:center;
   align-items:center;
@@ -29,7 +30,8 @@ body{
 
 .slide{
   display:none;
-  width:900px;
+  width:100%;
+  height:100%;
   position:relative;
 }
 
@@ -37,6 +39,73 @@ body{
   display:block;
 }
 
+/* WINDOW STYLE */
+.window{
+  background:var(--card);
+  border-radius:14px;
+  padding:16px;
+  position:absolute;
+  color:var(--text);
+}
+
+/* SLIDE 1 */
+.profile{
+  top:40px;
+  left:40px;
+  width:560px;
+}
+
+.profile .content{
+  display:flex;
+  gap:16px;
+}
+
+.profile img{
+  width:190px;
+  border-radius:12px;
+}
+
+.thumbs{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.thumbs div{
+  width:42px;
+  height:42px;
+  background:#9fa0ff;
+  border-radius:8px;
+}
+
+.action{
+  top:220px;
+  right:80px;
+}
+
+.player{
+  bottom:40px;
+  left:40px;
+  width:260px;
+  font-size:14px;
+}
+
+/* BUTTONS */
+.button{
+  background:var(--btn);
+  color:white;
+  padding:14px 26px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.25s;
+  width:fit-content;
+}
+
+.button:hover{
+  transform:scale(1.07);
+}
+
+/* SLIDE 2 & 3 CARD */
 .card{
   background:var(--card);
   border-radius:18px;
@@ -44,38 +113,13 @@ body{
   display:flex;
   gap:24px;
   color:var(--text);
-}
-
-.card img{
-  width:260px;
-  border-radius:16px;
-}
-
-h1,h2{
-  margin:0 0 14px 0;
-}
-
-.small{
-  font-size:15px;
-  line-height:1.7;
-}
-
-.button{
-  margin-top:18px;
-  background:var(--btn);
-  color:white;
-  padding:14px 28px;
-  border-radius:16px;
-  cursor:pointer;
-  width:fit-content;
-  transition:.25s ease;
-}
-
-.button:hover{
-  transform:scale(1.06);
+  width:900px;
+  margin:auto;
+  margin-top:80px;
 }
 
 .center{
+  flex-direction:column;
   text-align:center;
 }
 
@@ -97,15 +141,14 @@ h1,h2{
 /* BACK BUTTON */
 .back{
   position:absolute;
-  right:16px;
-  bottom:16px;
-  background:rgba(124,122,255,0.8);
+  right:20px;
+  bottom:20px;
+  background:rgba(124,122,255,0.85);
   color:white;
   padding:8px 14px;
   border-radius:12px;
   font-size:13px;
   cursor:pointer;
-  transition:.2s;
 }
 
 .back:hover{
@@ -121,25 +164,41 @@ h1,h2{
 
 <!-- SLIDE 1 -->
 <div class="slide active" id="slide1">
-  <div class="card">
-    <img src="kimseonho.jpg" alt="Kim Seonho">
-    <div>
-      <h1>Seonh0__kim</h1>
-      <p class="small">
-        <b>Hello, Bebe!</b><br>
-        Finally, we’re here.<br>
-        Let’s see what we’ve done together in these 365 days.
-      </p>
 
-      <div class="button" onclick="toggleMusic()">🎵 Play / Pause</div>
-      <div class="button" onclick="nextSlide(2)">Happy Anniversary 🤍</div>
+  <div class="window profile">
+    <div class="content">
+      <img src="kimseonho.jpg" alt="Kim Seonho">
+      <div>
+        <h2>Seonh0__kim</h2>
+        <p>
+          <b>Hello, Bebe!</b><br>
+          Finally, we’re here.<br>
+          Let’s see what we’ve done together<br>
+          in these 365 days.
+        </p>
+
+        <div class="thumbs">
+          <div></div><div></div><div></div><div></div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="window action">
+    <div class="button" onclick="nextSlide(2)">Happy Anniversary 🤍</div>
+  </div>
+
+  <div class="window player">
+    ♡ playing now<br>
+    <b>So Easy To Fall In Love</b><br><br>
+    <span class="button" onclick="toggleMusic()">⏯ Play / Pause</span>
+  </div>
+
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide" id="slide2">
-  <div class="card center" style="flex-direction:column;">
+  <div class="card center">
     <h2>Are you happy spending these 365 days wimme, Bebe?</h2>
 
     <div class="buttons">
@@ -155,8 +214,8 @@ h1,h2{
 
 <!-- SLIDE 3 -->
 <div class="slide" id="slide3">
-  <div class="card small">
-    <img src="couple.jpg" alt="Couple Photo">
+  <div class="card">
+    <img src="couple.jpg" style="width:260px;border-radius:16px;">
     <p>
       <b>Bebe, happy 365 days of us.</b><br>
       I still can’t believe we’ve come this far—side by side.<br><br>
@@ -183,7 +242,7 @@ h1,h2{
 </div>
 
 <script>
-const bgm = document.getElementById("bgm");
+const bgm=document.getElementById("bgm");
 
 function toggleMusic(){
   bgm.paused ? bgm.play() : bgm.pause();
@@ -208,7 +267,7 @@ const msg=document.getElementById('msg');
 
 yesBtn.onclick=()=>{
   count++;
-  yesBtn.style.transform=`scale(${1 + count*0.3})`;
+  yesBtn.style.transform=`scale(${1+count*0.3})`;
 
   if(count===1) msg.innerText="You sure ’bout it?";
   if(count===2) msg.innerText="Reallyyyyy?";
