@@ -102,4 +102,41 @@ body{
 <body>
 
 <audio id="music" loop autoplay>
-  <source src="so-easy-to-fal
+  <source src="so-easy-to-fall-in-love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDES -->
+<div class="slide active">
+  <h1>Happy Anniversary Bebe 💖</h1>
+  <p>Klik tombol di bawah untuk melihat kejutan selanjutnya!</p>
+  <button class="btn" id="nextBtn">Happy Anniversary 🎉</button>
+</div>
+
+<div class="slide">
+  <img src="gambar1.jpg" alt="Gambar Lucu">
+  <h1>Slide Kedua</h1>
+  <p>Semoga hari kita selalu bahagia dan penuh cinta!</p>
+</div>
+
+<div class="slide">
+  <div class="letter">
+    <h2>Surat Cinta</h2>
+    <p>Terima kasih sudah menjadi bagian terindah dalam hidupku. Aku selalu bersyukur memilikimu 💖</p>
+  </div>
+</div>
+
+<script>
+// JavaScript untuk navigasi slide
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  slides[currentSlide].classList.remove('active'); // sembunyikan slide sekarang
+  currentSlide++;
+  if(currentSlide >= slides.length) currentSlide = 0; // kembali ke slide pertama jika sudah terakhir
+  slides[currentSlide].classList.add('active'); // tampilkan slide berikutnya
+});
+</script>
+
+</body>
+</html>
