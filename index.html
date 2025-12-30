@@ -67,17 +67,6 @@ body{
   cursor:pointer;
 }
 
-.back{
-  position:absolute;
-  top:20px;
-  left:20px;
-  padding:10px 20px;
-  border:none;
-  border-radius:20px;
-  background:#ffc0cb;
-  cursor:pointer;
-}
-
 /* LETTER */
 .letter{
   background:#fffdf8;
@@ -101,6 +90,7 @@ body{
 </head>
 <body>
 
+<!-- Audio (bisa diganti dengan file lokal jika ada) -->
 <audio id="music" loop autoplay>
   <source src="so-easy-to-fall-in-love.mp3" type="audio/mpeg">
 </audio>
@@ -126,14 +116,14 @@ body{
 </div>
 
 <script>
-// JavaScript untuk navigasi slide
+// Script navigasi slide
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 
 document.getElementById('nextBtn').addEventListener('click', () => {
   slides[currentSlide].classList.remove('active'); // sembunyikan slide sekarang
   currentSlide++;
-  if(currentSlide >= slides.length) currentSlide = 0; // kembali ke slide pertama jika sudah terakhir
+  if(currentSlide >= slides.length) currentSlide = 0; // jika sudah slide terakhir, kembali ke awal
   slides[currentSlide].classList.add('active'); // tampilkan slide berikutnya
 });
 </script>
