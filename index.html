@@ -53,17 +53,16 @@ body{
 .window-body{
   display:flex;
   gap:25px;
-  pointer-events: none; /* agar klik melewati container */
 }
 
 .window img{
   width:230px;
   border-radius:14px;
-  pointer-events: none; /* agar klik melewati gambar */
 }
 
 .window-content{
-  pointer-events: auto; /* agar tombol bisa diklik */
+  display:flex;
+  flex-direction:column;
 }
 
 .window-content h1{
@@ -87,8 +86,7 @@ body{
   background:#5a5ad6;
   color:white;
   cursor:pointer;
-  position: relative;
-  z-index: 10; /* pastikan tombol selalu di atas */
+  z-index: 10;
 }
 
 .back{
@@ -113,8 +111,6 @@ body{
   justify-content:space-between;
   align-items:center;
   font-size:14px;
-  position: relative;
-  z-index: 1;
 }
 
 /* YES NO */
@@ -169,14 +165,14 @@ body{
           Let's see what we've done in<br>
           <b>365 days together</b>.
         </p>
-
-        <button class="btn" onclick="showSlide(2)">🎉 Happy Anniversary</button>
-
-        <div class="player">
-          <span>🎧 now playing<br><b>So Easy To Fall In Love</b></span>
-          <span>▶️</span>
-        </div>
       </div>
+    </div>
+    <!-- tombol dipindahkan ke sini agar tidak tertutup gambar -->
+    <button class="btn" onclick="showSlide(2)">🎉 Happy Anniversary</button>
+
+    <div class="player">
+      <span>🎧 now playing<br><b>So Easy To Fall In Love</b></span>
+      <span>▶️</span>
     </div>
   </div>
 </div>
@@ -196,10 +192,9 @@ body{
           Thank you for every laugh,<br>
           every story, and every moment.
         </p>
-
-        <button class="btn" onclick="showSlide(3)">Continue ❤️</button>
       </div>
     </div>
+    <button class="btn" onclick="showSlide(3)">Continue ❤️</button>
   </div>
 </div>
 
